@@ -1,0 +1,17 @@
+// Power BI measures - same definitions as the Databricks dashboard.
+// Tables loaded (Import): gold_daily_sales, gold_revenue_breakdown, gold_payment_success, gold_top_customers.
+// Date slicer on gold_daily_sales[order_date]. Never add measures over silver/bronze.
+
+Total Revenue = SUM ( gold_daily_sales[revenue] )
+
+Revenue Orders = SUM ( gold_daily_sales[revenue_orders] )
+
+Average Order Value = DIVIDE ( [Total Revenue], [Revenue Orders] )
+
+Cancellation Rate = DIVIDE ( SUM ( gold_daily_sales[cancelled_orders] ), SUM ( gold_daily_sales[total_orders] ) )
+
+Payment Success Rate = DIVIDE ( SUM ( gold_payment_success[successful_transactions] ), SUM ( gold_payment_success[attempted_transactions] ) )
+
+// Category chart: use gold_revenue_breakdown[category] on the axis with SUM ( gold_revenue_breakdown[revenue] ).
+// It has no date column, so it does not react to the date slicer; for date-aware category revenue, import
+// revenue_base_vw (grain: one row per eligible order) or add a category slicer instead and say so in the report.

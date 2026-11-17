@@ -1,0 +1,19 @@
+# Source data and generated outputs (large, synthetic, reproducible from the seed)
+*.csv
+*.csv.gz
+generated/
+*.parquet
+
+# Secrets / credentials
+.env
+*.env
+secrets/
+*.pem
+databricks.cfg
+.databrickscfg
+
+# Raw exports that may hold sensitive details
+evidence/raw_exports/
+
+# NOTE: *.pbix is deliberately NOT ignored: the assignment requires powerbi/*.pbix.
+# Keep it small (Import of the four Gold tables only) and mask any connection secrets.
