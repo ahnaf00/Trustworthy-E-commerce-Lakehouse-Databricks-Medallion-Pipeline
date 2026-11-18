@@ -1,0 +1,60 @@
+{
+  "seed": 20261117,
+  "rows_per_file": 1000000,
+  "data_rows_written": {
+    "orders.csv": 1000000,
+    "transactions.csv": 1000000
+  },
+  "file_bytes": {
+    "orders.csv": 59807067,
+    "transactions.csv": 74098098
+  },
+  "file_sha256": {
+    "orders.csv": "3c0f70d21628cc391dbb3da7bf4d44aa2a9852bd71d2b9a9f856a26060b8b566",
+    "transactions.csv": "9cd28ca1d0ba46649e8a2dcbbb6f058af9a070204bcc860f2a59efb94520e6f1"
+  },
+  "generated_at_utc": "2026-11-18T03:40:03.800984+00:00",
+  "anomalies": {
+    "orders.duplicate_key": 5,
+    "orders.exact_duplicate_row": 24,
+    "orders.future_date": 1988,
+    "orders.invalid_country": 1426,
+    "orders.label_whitespace_case": 1647,
+    "orders.negative_quantity": 2493,
+    "orders.null_or_blank": 4977,
+    "orders.text_numeric": 3003,
+    "orders.unparseable_date": 1233,
+    "transactions.duplicate_key": 5,
+    "transactions.exact_duplicate_row": 22,
+    "transactions.future_timestamp": 1919,
+    "transactions.label_whitespace_case": 1631,
+    "transactions.negative_amount": 2386,
+    "transactions.null_or_blank": 4739,
+    "transactions.orphan_order_injected": 1390,
+    "transactions.orphan_order_natural": 47894,
+    "transactions.text_numeric": 3257,
+    "transactions.unparseable_timestamp": 1236
+  },
+  "anomaly_fraction_of_file": {
+    "orders.duplicate_key": 5e-06,
+    "orders.exact_duplicate_row": 2.4e-05,
+    "orders.future_date": 0.001988,
+    "orders.invalid_country": 0.001426,
+    "orders.label_whitespace_case": 0.001647,
+    "orders.negative_quantity": 0.002493,
+    "orders.null_or_blank": 0.004977,
+    "orders.text_numeric": 0.003003,
+    "orders.unparseable_date": 0.001233,
+    "transactions.duplicate_key": 5e-06,
+    "transactions.exact_duplicate_row": 2.2e-05,
+    "transactions.future_timestamp": 0.001919,
+    "transactions.label_whitespace_case": 0.001631,
+    "transactions.negative_amount": 0.002386,
+    "transactions.null_or_blank": 0.004739,
+    "transactions.orphan_order_injected": 0.00139,
+    "transactions.orphan_order_natural": 0.047894,
+    "transactions.text_numeric": 0.003257,
+    "transactions.unparseable_timestamp": 0.001236
+  },
+  "note": "A row can carry more than one anomaly; counts are per injection."
+}
