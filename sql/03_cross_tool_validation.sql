@@ -1,6 +1,6 @@
 -- Same revenue, same filters, three tools. Fixed filter used EVERYWHERE:
 --   order_date between 2026-01-01 and 2026-12-31, currency USD, eligible orders only.
-USE CATALOG YOUR_CATALOG;
+USE CATALOG workspace;
 USE SCHEMA ecom_poc;
 
 -- (1) Databricks SQL warehouse result - run this and screenshot it:

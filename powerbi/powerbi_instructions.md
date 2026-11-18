@@ -1,7 +1,7 @@
 # Power BI Desktop steps
 
 1. **Get Data > Databricks** (native connector). Server hostname and HTTP path: SQL warehouse > *Connection details*. Sign in with Azure AD / OAuth or a personal access token. **Never screenshot or commit the token.**
-2. Pick catalog `YOUR_CATALOG` > schema `ecom_poc` > the four `gold_*` tables (plus `revenue_base_vw` only if you want a date-aware category chart).
+2. Pick catalog `workspace` > schema `ecom_poc` > the four `gold_*` tables (plus `revenue_base_vw` only if you want a date-aware category chart).
 3. **Mode:** choose **Import** (data is copied into the .pbix, charts are fast, the warehouse can stop; data goes stale until Refresh). **DirectQuery** sends every click to the warehouse (always fresh, but slower, keeps the warehouse running = credits, and restricts some DAX). With ~365 daily rows plus small marts, Import is the right choice here.
 4. Add the measures from `measures.dax`.
 5. One report page: 4 KPI cards (Total Revenue, Revenue Orders, Average Order Value, Cancellation Rate), a line chart (order_date x Total Revenue), a column chart (category x revenue), and slicers (order_date range; optional country/payment_method).

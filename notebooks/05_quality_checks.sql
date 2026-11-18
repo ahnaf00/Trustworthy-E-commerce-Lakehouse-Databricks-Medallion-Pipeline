@@ -5,7 +5,7 @@
 
 -- COMMAND ----------
 
-USE CATALOG YOUR_CATALOG;
+USE CATALOG workspace;
 USE SCHEMA ecom_poc;
 
 -- COMMAND ----------

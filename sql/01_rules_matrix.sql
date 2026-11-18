@@ -1,6 +1,6 @@
 -- Business-rule matrix. The enforcing logic lives in notebooks/03_silver_quality.sql;
 -- this table documents it and lets you JOIN rule descriptions to silver_rule_counts.
-USE CATALOG YOUR_CATALOG;
+USE CATALOG workspace;
 USE SCHEMA ecom_poc;
 
 CREATE OR REPLACE TABLE silver_rules_matrix

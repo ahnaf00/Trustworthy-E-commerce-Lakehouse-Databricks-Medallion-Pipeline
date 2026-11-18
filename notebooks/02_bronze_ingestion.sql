@@ -13,7 +13,7 @@
 
 -- COMMAND ----------
 
-USE CATALOG YOUR_CATALOG;
+USE CATALOG workspace;
 USE SCHEMA ecom_poc;
 
 CREATE TABLE IF NOT EXISTS bronze_orders (
@@ -50,7 +50,7 @@ SELECT
     'category', category, 'quantity', quantity, 'unit_price', unit_price,
     'order_status', order_status, 'country', country)), 256)
 FROM read_files(
-  '/Volumes/YOUR_CATALOG/ecom_poc/raw_files/orders.csv',
+  '/Volumes/workspace/ecom_poc/raw_files/orders.csv',
   format => 'csv', header => true, inferSchema => false, nullValue => '__NO_NULL__')
 WHERE NOT EXISTS (SELECT 1 FROM bronze_orders b WHERE b._batch_id = batch_id);
 
@@ -67,7 +67,7 @@ SELECT
     'txn_id', txn_id, 'order_id', order_id, 'payment_method', payment_method,
     'amount', amount, 'currency', currency, 'txn_status', txn_status, 'txn_ts', txn_ts)), 256)
 FROM read_files(
-  '/Volumes/YOUR_CATALOG/ecom_poc/raw_files/transactions.csv',
+  '/Volumes/workspace/ecom_poc/raw_files/transactions.csv',
   format => 'csv', header => true, inferSchema => false, nullValue => '__NO_NULL__')
 WHERE NOT EXISTS (SELECT 1 FROM bronze_transactions b WHERE b._batch_id = batch_id);
 

@@ -1,7 +1,7 @@
 # AI/BI dashboard specification
 
 Build in the workspace: **Dashboards > Create dashboard**. Data = datasets from `sql/04_dashboard_datasets.sql`
-(replace `YOUR_CATALOG` first). Use the small SQL warehouse; stop it when finished.
+(replace `workspace` first). Use the small SQL warehouse; stop it when finished.
 
 | # | Widget | Type | Dataset | Field / setting |
 |---|--------|------|---------|-----------------|

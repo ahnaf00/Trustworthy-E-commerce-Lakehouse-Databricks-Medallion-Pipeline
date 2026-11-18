@@ -3,7 +3,7 @@
 --   "Revenue means the revenue column in gold_daily_sales / gold_revenue_breakdown (USD, completed or
 --    delivered orders, one successful payment per order). cancellation_rate = cancelled_orders / total_orders."
 -- If Genie is not available in your trial: screenshot the restriction and submit these prompts + SQL as the fallback.
-USE CATALOG YOUR_CATALOG;
+USE CATALOG workspace;
 USE SCHEMA ecom_poc;
 
 -- Q1 "What was total revenue in 2026 and how many orders produced it?"

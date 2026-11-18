@@ -9,7 +9,7 @@
 
 -- COMMAND ----------
 
-USE CATALOG YOUR_CATALOG;
+USE CATALOG workspace;
 USE SCHEMA ecom_poc;
 -- Fixed session time zone so timestamp parsing and "future" checks are reproducible.
 SET TIME ZONE 'UTC';

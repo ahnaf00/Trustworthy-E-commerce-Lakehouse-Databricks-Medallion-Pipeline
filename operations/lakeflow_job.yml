@@ -33,4 +33,4 @@ resources:
             notebook_path: /Workspace/Users/YOUR_EMAIL/ecom/notebooks/05_quality_checks
           max_retries: 0   # a failed assertion is a real finding, retrying will not fix it
       # Serverless jobs compute: leave out new_cluster/job_clusters when serverless is available.
-      # (YOUR_CATALOG must already be replaced inside the notebooks.)
+      # (workspace must already be replaced inside the notebooks.)
