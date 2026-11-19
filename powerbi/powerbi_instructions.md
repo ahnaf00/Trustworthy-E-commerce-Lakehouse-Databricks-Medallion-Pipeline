@@ -10,6 +10,18 @@
 
 **Fallback if the connector is blocked:** run `SELECT * FROM gold_*` in the SQL editor, download CSVs (Gold only, small), import them into Power BI and write "Gold-only CSV fallback used because <reason>" in the README.
 
+## Completion checklist (tick only when really done)
+- [ ] Warehouse running; copied Server hostname + HTTP path (see `gold_import.pq`)
+- [ ] Imported the 4 `gold_*` tables (Import mode); screenshot Connection dialog with host masked -> `evidence/23_powerbi_connection.png`
+- [ ] Added the 5 measures from `measures.dax`; set `revenue`/`total_spend` to Fixed decimal
+- [ ] Built the one-page report (4 cards, line trend, category column chart, date + country/payment slicers) -> `powerbi/report.png` and `evidence/24_powerbi_report.png`
+- [ ] Date slicer 2026-01-01..2026-12-31; read **Total Revenue** card and **Revenue Orders**
+- [ ] Ran query (1) in `sql/03_cross_tool_validation.sql` in the SQL editor; screenshot -> `evidence/25_revenue_comparison.png` with the dashboard KPI and the Power BI card side by side
+- [ ] Saved `powerbi/ecom_lakehouse.pbix` (File > Options > Data source settings: no stored token in the file; delete the PAT afterwards)
+- [ ] Filled the table below and README §8
+
+Reference only: the dashboard screenshot (`evidence/dashboard_data.png`) shows Total Revenue about $10.5M, Revenue Orders 23.18K, AOV $451.69, Cancellation 19.98%. These are rounded display values; use the exact SQL figure in the table, not these.
+
 ## Revenue comparison (fill from your own outputs)
 
 | Tool | Filters | Total revenue | Orders |
