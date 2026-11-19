@@ -26,7 +26,7 @@ Reference only: the dashboard screenshot (`evidence/dashboard_data.png`) shows T
 
 | Tool | Filters | Total revenue | Orders |
 |------|---------|---------------|--------|
-| Databricks SQL | 2026-01-01..2026-12-31, USD | | |
+| Databricks SQL | 2026-01-01..2026-12-31, USD | 10,482,656.92 | 23,189 |
 | AI/BI dashboard | same | | |
 | Power BI | same | | |
 | Difference | | | |
