@@ -372,11 +372,15 @@ The job `ecom_medallion_pipeline` chains the four notebooks on serverless comput
 | Task | Depends on | Retries |
 |---|---|---|
 | `bronze_ingestion` | — | 2 |
-| `silver_quality` | bronze_ingestion | 2 |
-| `gold_models` | silver_quality | 2 |
-| `quality_checks` | gold_models | 0 (a failed assertion is a real finding, so retrying would not help) |
+| `silver_quality` | bronze_ingestion | 1 |
+| `gold_models` | silver_quality | 1 |
+| `quality_checks` | gold_models | 1 |
 
-Failure notifications are configured in the job definition, and the job has **no schedule**: it is run manually.
+Each retry waits 60 seconds, which absorbs transient serverless or startup errors. A genuine data failure still fails the run once its retries are used up.
+
+**Notifications:** an email is sent when a run starts, succeeds or fails. Alerts for skipped and cancelled runs are suppressed to avoid noise.
+
+**Schedule:** none. The job is run manually and queued if a run is already in progress.
 
 **Why Gold does not run after a failed dependency:** if `silver_quality` fails, `gold_models` is marked *Upstream failed* and skipped. Otherwise Gold would publish numbers built from stale or half-written Silver data. A missing report is safer than a wrong one.
 

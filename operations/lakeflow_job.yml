@@ -1,36 +1,64 @@
-# Lakeflow Job definition (Databricks Asset Bundle style). You can also build the same job in the UI:
-# Jobs & Pipelines > Create > Job > add the 4 tasks below, set dependencies, retries, notifications.
-# Replace YOUR_EMAIL and the notebook paths (workspace paths of the notebooks in your Git folder).
+# Lakeflow Job definition, exported from the live workspace (Databricks Asset Bundle format).
+# The personal email address is replaced with aanana0171@gmail.com; set your own before deploying.
+# No schedule block on purpose: the job is run manually to avoid consuming trial credits.
 resources:
   jobs:
-    ecom_medallion:
-      name: ecom_medallion_bronze_silver_gold
-      # NO schedule block on purpose: the assignment job is run once manually.
+    ecom_medallion_pipeline:
+      name: ecom_medallion_pipeline
       email_notifications:
-        on_failure: ["YOUR_EMAIL"]
-        on_success: ["YOUR_EMAIL"]
+        on_start:
+          - aanana0171@gmail.com
+        on_success:
+          - aanana0171@gmail.com
+        on_failure:
+          - aanana0171@gmail.com
+        no_alert_for_skipped_runs: true
+      notification_settings:
+        no_alert_for_skipped_runs: true
+        no_alert_for_canceled_runs: true
       tasks:
         - task_key: bronze_ingestion
           notebook_task:
-            notebook_path: /Workspace/Users/YOUR_EMAIL/ecom/notebooks/02_bronze_ingestion
+            notebook_path: /Workspace/Users/aanana0171@gmail.com/02_bronze_ingestion
+            source: WORKSPACE
           max_retries: 2
           min_retry_interval_millis: 60000
+          disable_auto_optimization: false
+          environment_key: Default
         - task_key: silver_quality
-          depends_on: [{ task_key: bronze_ingestion }]
+          depends_on:
+            - task_key: bronze_ingestion
           notebook_task:
-            notebook_path: /Workspace/Users/YOUR_EMAIL/ecom/notebooks/03_silver_quality
-          max_retries: 2
+            notebook_path: /Workspace/Users/aanana0171@gmail.com/03_silver_quality
+            source: WORKSPACE
+          max_retries: 1
           min_retry_interval_millis: 60000
+          disable_auto_optimization: false
+          environment_key: Default
         - task_key: gold_models
-          depends_on: [{ task_key: silver_quality }]
+          depends_on:
+            - task_key: silver_quality
           notebook_task:
-            notebook_path: /Workspace/Users/YOUR_EMAIL/ecom/notebooks/04_gold_models
-          max_retries: 2
+            notebook_path: /Workspace/Users/aanana0171@gmail.com/04_gold_models
+            source: WORKSPACE
+          max_retries: 1
           min_retry_interval_millis: 60000
+          disable_auto_optimization: false
+          environment_key: Default
         - task_key: quality_checks
-          depends_on: [{ task_key: gold_models }]
+          depends_on:
+            - task_key: gold_models
           notebook_task:
-            notebook_path: /Workspace/Users/YOUR_EMAIL/ecom/notebooks/05_quality_checks
-          max_retries: 0   # a failed assertion is a real finding, retrying will not fix it
-      # Serverless jobs compute: leave out new_cluster/job_clusters when serverless is available.
-      # (workspace must already be replaced inside the notebooks.)
+            notebook_path: /Workspace/Users/aanana0171@gmail.com/05_quality_checks
+            source: WORKSPACE
+          max_retries: 1
+          min_retry_interval_millis: 60000
+          disable_auto_optimization: false
+          environment_key: Default
+      queue:
+        enabled: true
+      environments:
+        - environment_key: Default
+          spec:
+            environment_version: "6"
+      performance_target: PERFORMANCE_OPTIMIZED
